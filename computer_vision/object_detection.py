@@ -136,13 +136,11 @@ if __name__ == "__main__":
     cap = cv2.VideoCapture(0)
     while True:
         ret, frame = cap.read()
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
         # run inference
         res = run_inference_for_single_image(frame, sess, tensor_dict, image_tensor)
 
         # view the bounding boxes:
-        frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
         cv2_visualize_results(frame, res, labels)
         cv2.imshow('frame', frame)
 
